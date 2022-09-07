@@ -145,8 +145,7 @@ cd $HOME/nearcore
 ./target/release/neard --home ~/.near run
 ```
 ![синхронизация](https://raw.githubusercontent.com/pero85v/stakewars-iii/main/images/syncing.jpg)
-
-По скриншоту видно что начали закачиваться заголовки, дальше будут закачиваться блоки, полная синхронизация может занять много времени.
+На скриншоте видно что начали закачиваться заголовки, дальше закачиваются блоки, полная синхронизация может занять много времени.
 
 Активирую ноду, чтобы ее можно было использовать как валидатора. Сначала авторизую кошелек локально:
 ```
@@ -247,14 +246,13 @@ near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "<pool 
 ```
 near call factory.shardnet.near create_staking_pool '{"staking_pool_id": "test-split-pool", "owner_id": "roltop.shardnet.near", "stake_public_key": "ed25519:DG5tyg5Q32zSaMeyEZpK9njDqMWTN9o3BL3fv3wAohFU", "reward_fee_fraction": {"numerator": 10, "denominator": 100}, "code_hash":"DD428g9eqLL8fWUxv8QSpVFzyHi1Qd16P8ephYCTmMSZ"}' --accountId="roltop.shardnet.near" --amount=30 —gas=300000000000000
 ```
-![create_staking_pool](https://raw.githubusercontent.com/pero85v/stakewars-iii/main/images/deploy.jpg)
-
 **test-split-pool** это часть названия моего пула ставок.
 К пулу ставок потом можно будет обращаться так: **test-split-pool.factory.shardnet.near**
 **roltop.shardnet.near** мой кошелек. 
 значение начинающееся с **ed25519:** берем из поля **public_key** файла **validator_key.json**
 здесь **10** это процент который пул ставок будет брать со всех делегаций, тоесть **{"numerator": 10, "denominator": 100}** это **10** процентов комиссии.
 Этой командой я создал пул  **test-split-pool.factory.shardnet.near**
+![create_staking_pool](https://raw.githubusercontent.com/pero85v/stakewars-iii/main/images/deploy.jpg)
 
 Внесу тестовые токены на контракт пула ставок и застейкаю их одной командой:
 ```
@@ -285,10 +283,8 @@ near validators current
 near validators next
 ```
 
-
 Контроль логов позволяет мониторить ноду. Также надо настроить извещения приходящие на почту или в телеграм о работе ноды.
 ![Лог ноды валидатора](https://raw.githubusercontent.com/pero85v/stakewars-iii/main/images/sync_val.jpg)
-Образец лога ноды валидатора:
 **#3344617** номер текущего блока
 **Validator** появляется когда нода валидирует
 **100 validators** 100 валидаторов блоков (валидаторы чанков считаются отдельно)
